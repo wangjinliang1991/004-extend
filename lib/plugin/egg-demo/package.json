@@ -1,0 +1,6 @@
+{
+  "name": "egg-demo",
+  "eggPlugin": {
+    "name": "demo"
+  }
+}
