@@ -86,3 +86,19 @@ async isIOS(){
 }
 ```
 
+## 报错处理
+
+nodejs.TypeError: Cannot read properties of undefined (reading 'info')
+
+原因是environment.js写错了
+```js
+this.coreLogger = app.loggers.coreLogger;
+```
+loggers写成了logger，没有语法提示，好尴尬
+
+## 扩展的默认配置
+
+假设extend的demo.js写错了，写成了demo111.js
+插件里面的demo.js写的合适的，就会读取插件里面的
+
+如果都有，默认先读取插件的，可以debug看
