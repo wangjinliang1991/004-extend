@@ -8,7 +8,7 @@ class HomeController extends Controller {
   }
 
   async info() {
-    this.ctx.body = `info from: ${this.app.demo.info}`
+    this.ctx.body = `info from: ${this.app.demo.info} with ${this.app.bar}`
   }
 }
 
