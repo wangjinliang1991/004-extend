@@ -102,3 +102,38 @@ loggers写成了logger，没有语法提示，好尴尬
 插件里面的demo.js写的合适的，就会读取插件里面的
 
 如果都有，默认先读取插件的，可以debug看
+
+##  application的扩展
+
+```js
+module.exports = {
+  // 单例
+  get bar() {
+    return Math.random();
+  }
+}
+```
+
+controller直接用
+```js
+async info() {
+    this.ctx.body = `info from: ${this.app.demo.info} with ${this.app.bar}`
+  }
+```
+
+## 单例
+只有application的扩展可以，因为整个生命周期只有1个app，而ctx每次都不一样
+application.js
+```js
+const BAR = Symbol('Application#bar')
+
+module.exports = {
+  // 单例
+  get bar() {
+    if (!this[BAR]) {
+      this[BAR] = Math.random()
+    }
+    return this[BAR];
+  }
+}
+```
